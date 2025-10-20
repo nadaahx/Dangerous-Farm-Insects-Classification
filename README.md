@@ -40,7 +40,7 @@ Development Guidelines
 Here's a suggested approach for organizing CNN architectures in this project. Feel free to propose and implement alternative structures if they better suit your needs:
 
 1. Consider creating a new Python file in the `src/architectures/` directory
-2. You might want to name the file after your architecture (e.g., `alexnet.py`, `resnet.py`)
+2. You might want to name the file after your architecture (e.g., `alexnet.py`, `lenet.py`)
 3. One recommended pattern is implementing your model as a class that can be imported from the main file
 
 Suggested structure (but open to better alternatives):
@@ -49,7 +49,7 @@ Suggested structure (but open to better alternatives):
 src/
   architectures/
     alexnet.py      # Contains AlexNetModel class
-    resnet.py       # Contains ResNetModel class
+    lenet.py        # Contains LeNetModel class
     vgg.py          # Contains VGGModel class
   main.py          # Imports and uses the models
 ```
