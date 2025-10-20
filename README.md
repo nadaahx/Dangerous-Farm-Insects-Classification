@@ -31,3 +31,27 @@ Using paths in code
 -------------------
 
 When developing CNN architectures or scripts you can import dataset paths directly from `src/config/data_paths.py`. This file exposes convenient Path objects such as `TRAINING_SET`, `VALIDATION_SET`, and `TESTING_SET` so your training code can use the correct filesystem locations without hardcoding paths.
+
+Development Guidelines
+--------------------
+
+### CNN Architectures
+
+Here's a suggested approach for organizing CNN architectures in this project. Feel free to propose and implement alternative structures if they better suit your needs:
+
+1. Consider creating a new Python file in the `src/architectures/` directory
+2. You might want to name the file after your architecture (e.g., `alexnet.py`, `resnet.py`)
+3. One recommended pattern is implementing your model as a class that can be imported from the main file
+
+Suggested structure (but open to better alternatives):
+
+```
+src/
+  architectures/
+    alexnet.py      # Contains AlexNetModel class
+    resnet.py       # Contains ResNetModel class
+    vgg.py          # Contains VGGModel class
+  main.py          # Imports and uses the models
+```
+
+This is just one way to organize the code - if you have ideas for a better structure or a different approach that could benefit the project, please feel free to suggest and implement it. The goal is to maintain clean, maintainable code while allowing flexibility for different architectural approaches.
