@@ -1,57 +1,71 @@
-# Dangerous-Farm-Insects-Classification
+# Dangerous Farm Insects Classification
 
-This repository contains code for classifying dangerous farm insects. The project expects the dataset to be provided by the team rather than included in the repository.
+This project aims to classify various species of dangerous farm insects using Deep Learning techniques. It includes a data preprocessing pipeline for splitting and augmenting the dataset, as well as implementations of several popular Convolutional Neural Network (CNN) architectures.
 
-Dataset placement
------------------
+## 🐛 Dataset
 
-Please place the dataset folder named "farm_insects" inside the `data/raw/` directory at the repository root. The expected path is:
+The dataset consists of images of the following farm insects:
 
-```
-data/raw/farm_insects/
-```
+*   Africanized Honey Bees (Killer Bees)
+*   Aphids
+*   Armyworms
+*   Brown Marmorated Stink Bugs
+*   Cabbage Loopers
+*   Citrus Canker
+*   Colorado Potato Beetles
+*   Corn Borers
+*   Corn Earworms
+*   Fall Armyworms
+*   Fruit Flies
+*   Spider Mites
+*   Thrips
+*   Tomato Hornworms
+*   Western Corn Rootworms
 
-Example structure (top-level of the dataset folder):
+## 🏗️ Project Structure
 
-```
-data/raw/farm_insects/
-  Africanized Honey Bees (Killer Bees)/
-  Aphids/
-  Armyworms/
-  ...
-```
+*   **`src/main.py`**: Entry point for the data preprocessing pipeline.
+*   **`src/data/`**: Contains the `Data_Preprocessor` class which handles:
+    *   Stratified K-Fold splitting (Train/Val/Test).
+    *   Class balancing via image augmentation.
+*   **`src/architectures/`**: Jupyter notebooks containing model implementations and training loops for:
+    *   AlexNet
+    *   GoogLeNet (Inception v1)
+    *   InceptionV3
+    *   LeNet-5
+    *   ResNet50
+    *   VGG16
+*   **`data/`**: Stores raw and processed image data.
 
-We intentionally ignore `data/` in version control to avoid committing large files. After placing the dataset, run the preprocessing script at `src/main.py` to prepare data for training.
+## 🚀 Getting Started
 
-- Code entry point: `src/main.py`
-- Data preprocessing script: `src/data/data_preprocessor.py`
-- Data paths configuration: `src/config/data_paths.py`
+### Prerequisites
 
-Using paths in code
--------------------
+Ensure you have Python installed along with the following libraries:
 
-When developing CNN architectures or scripts you can import dataset paths directly from `src/config/data_paths.py`. This file exposes convenient Path objects such as `TRAINING_SET`, `VALIDATION_SET`, and `TESTING_SET` so your training code can use the correct filesystem locations without hardcoding paths.
+*   TensorFlow / Keras
+*   NumPy
+*   scikit-learn
+*   Pillow (PIL)
 
-Development Guidelines
---------------------
+### Usage
 
-### CNN Architectures
+1.  **Data Preprocessing**:
+    Run the main script to process the raw data, create splits, and apply augmentation.
+    ```bash
+    python src/main.py
+    ```
+    This will generate the processed dataset in `data/processed/farm_insects/`.
 
-Here's a suggested approach for organizing CNN architectures in this project. Feel free to propose and implement alternative structures if they better suit your needs:
+2.  **Model Training**:
+    Navigate to the `src/architectures/` directory and open the Jupyter notebook corresponding to the model you wish to train (e.g., `ResNet50.ipynb`, `VGG16 (4).ipynb`). Run the cells to train and evaluate the model.
 
-1. Consider creating a new Python file in the `src/architectures/` directory
-2. You might want to name the file after your architecture (e.g., `alexnet.py`, `lenet.py`)
-3. One recommended pattern is implementing your model as a class that can be imported from the main file
+## 🧠 Architectures Implemented
 
-Suggested structure (but open to better alternatives):
+The project explores the performance of the following architectures on the insect classification task:
 
-```
-src/
-  architectures/
-    alexnet.py      # Contains AlexNetModel class
-    lenet.py        # Contains LeNetModel class
-    vgg.py          # Contains VGGModel class
-  main.py          # Imports and uses the models
-```
-
-This is just one way to organize the code - if you have ideas for a better structure or a different approach that could benefit the project, please feel free to suggest and implement it. The goal is to maintain clean, maintainable code while allowing flexibility for different architectural approaches.
+*   **LeNet-5**: A classic CNN architecture.
+*   **AlexNet**: A deeper architecture that popularized CNNs.
+*   **VGG16**: Known for its simplicity and depth.
+*   **GoogLeNet / InceptionV3**: Efficient architectures using Inception modules.
+*   **ResNet50**: Uses residual connections to allow training of very deep networks.
